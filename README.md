@@ -1,15 +1,20 @@
-# 👝 learning-loop · 学习闭环·六能力加速器
-
-> **六个名词不是六个并列功能，是三层闭环 + 一条回流线。**
-> 解决的不是「讲得清楚」，是「当场懂了、隔周忘了、还以为自己会了」。
+<p align="center">
+  <img src="assets/hero.svg" alt="learning-loop 学习闭环·六能力加速器" width="100%">
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/platform-WorkBuddy%20%2F%20CodeBuddy-9cf" alt="platform">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="license">
   <img src="https://img.shields.io/badge/lang-%E4%B8%AD%E6%96%87-red" alt="lang">
-  <img src="https://img.shields.io/badge/version-1.0.0-blue" alt="version">
+  <img src="https://img.shields.io/badge/version-1.1.0-blue" alt="version">
   <img src="https://img.shields.io/badge/python-%E7%BA%AF%E6%A0%87%E5%87%86%E5%BA%93-blue" alt="python">
+  <img src="https://img.shields.io/badge/state-%E7%A3%81%E7%9B%98%E8%90%BD%E7%9B%98-orange" alt="state">
 </p>
+
+# 👝 learning-loop · 学习闭环·六能力加速器
+
+> **六个名词不是六个并列功能，是三层闭环 + 一条回流线。**
+> 解决的不是「讲得清楚」，是「当场懂了、隔周忘了、还以为自己会了」。
 
 ---
 
@@ -20,6 +25,18 @@
 真正常见的失效是：**当场懂了 → 隔周忘了 → 还以为自己会了**。
 
 这个技能把六个能力组织成一条闭环，并用磁盘档案兜底——卡点不会随对话消失，下一轮任务按卡点动态重排，还强制加上间隔复习和硬通过线。它不是「六个提示词」，是一套能真跑起来的学习机制。
+
+## 📚 导航
+
+| Section | 内容 |
+|---|---|
+| [三层闭环](#三层闭环) | 六能力如何分工、回流线为什么是关键 |
+| [六项能力](#六项能力) | 每个能力的实质与做到位的标志 |
+| [原设计补齐的两块](#原设计补齐的两块) | 留存 + 通过线 |
+| [快速开始](#快速开始) | 安装与触发 |
+| [状态落盘](#状态落盘) | 脚本命令与档案结构 |
+| [硬红线](#-硬红线) | 不可违背的九条 |
+| [变更记录](CHANGELOG.md) | v1.1 新增与改进 |
 
 ---
 
@@ -32,7 +49,9 @@
 | 第三层 · 输出验证 | ⑥ 强制费曼方法 | 用输出倒逼输入，给通过线 |
 | 回流 | ⑥ 讲不下去的地方 → 回写 ④ | 重排下一轮，形成越学越快的闭环 |
 
-右侧那条回流线是整个机制的关键：**讲不下去的地方必须回写并重排下一轮任务**，否则六项就只是六个一次性动作。
+**回流线是整个机制的关键**：讲不下去的地方必须回写并重排下一轮任务，否则六项就只是六个一次性动作。回流失效（连续两轮任务相同）会被脚本告警。
+
+**诊断单通道**：用户明说不懂只走 ③，自认懂了只走 ⑤。③ 与 ⑤、② 与 ⑤ 功能有重叠，同轮双开只会重复追问同一件事。
 
 ---
 
@@ -47,8 +66,6 @@
 | ⑤ | 隐藏漏洞检测器 | 用变式、反向提问、边界条件、换场景迁移戳破流畅性错觉 | 能区分「认得出来」和「能自己生成」 |
 | ⑥ | 强制费曼方法 | 禁用术语、不查资料，讲给外行；卡住处立即回炉 | 不经提示讲通，且答对一次变式题 |
 
-**诊断单通道**：用户明说不懂只走 ③，自认懂了只走 ⑤。③ 与 ⑤、② 与 ⑤ 功能有重叠，同轮双开只会重复追问同一件事。
-
 ---
 
 ## 原设计补齐的两块
@@ -60,9 +77,11 @@
 
 ---
 
-## 安装
+## 快速开始
 
-把整个技能文件夹复制到 WorkBuddy 用户级技能目录，重启即可：
+<p align="center">
+  <img src="assets/install-flow.svg" alt="四步安装流程" width="100%">
+</p>
 
 ```bash
 # Windows
@@ -71,11 +90,7 @@ xcopy learning-loop  "%USERPROFILE%\.workbuddy\skills\learning-loop\" /E /I
 cp -r learning-loop  ~/.workbuddy/skills/
 ```
 
----
-
-## 怎么触发
-
-直接对 WorkBuddy 说：
+重启 WorkBuddy 后，直接说：
 
 - 「我要学 X」「教我 X」「带我啃 X」
 - 「检查我是不是真懂」「我好像懂了」「考我」
@@ -106,9 +121,7 @@ python scripts/loop.py check
 - `pass` 只把「声称通过」落盘，**判定权在流程，不在脚本**。
 - `check` 校验档案结构、编号唯一、状态合法、日期格式。
 
----
-
-## 目录结构
+目录结构：
 
 ```
 learning-loop/
@@ -138,12 +151,20 @@ learning-loop/
 
 ---
 
+## 安全与隐私
+
+本技能为**通用学习方法**，不绑定任何行业题库，不含任何敏感素材、真实凭据、服务器地址或个人隐私信息。档案只写在本地 `state/`，不上传。
+
+发现遗漏欢迎提 Issue（模板已配置）。
+
 ## 许可证与作者
 
 MIT License，详见 [LICENSE](LICENSE)。
 
 - 维护者：叶徐刚（乾坤袋）
 - 公司：武汉宏刚行科技发展有限公司
+- 邮箱：86264723@qq.com
+- 公众号：初心杂谈的碎碎念
 - GitHub：[@yehuzi2026](https://github.com/yehuzi2026)
 - 同系列技能库：[workbuddy-skills-hub](https://github.com/yehuzi2026/workbuddy-skills-hub)（75 个中文实战技能）
 
